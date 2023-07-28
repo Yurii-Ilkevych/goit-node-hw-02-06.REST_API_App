@@ -1,3 +1,3 @@
-const {Contact, schemaFullContact, schemaFavoriteContact} = require("./contact")
+const {Contact, schemaFullContact, schemaFavoriteContact, User, userSchemaValid} = require("./shemas")
 
-module.exports = {Contact, schemaFullContact, schemaFavoriteContact}
+module.exports = {Contact, schemaFullContact, schemaFavoriteContact, User, userSchemaValid}

@@ -5,6 +5,8 @@ const {
   addContact,
   updateContact,
   updateStatusContact,
+  filterContactByFavorite,
+  paginateContacts
 } = require("./contactsService");
 
 module.exports = {
@@ -14,4 +16,6 @@ module.exports = {
   addContact,
   updateContact,
   updateStatusContact,
+  filterContactByFavorite,
+  paginateContacts,
 };

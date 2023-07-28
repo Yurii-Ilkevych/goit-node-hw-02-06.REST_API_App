@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { isValidId, ValidBody } = require("../../middlewares");
+const {
+  isValidId,
+  ValidBody,
+  auth,
+  isOwnerOfContact,
+} = require("../../middlewares");
 const {
   getContacts,
   getContactById,
@@ -8,22 +13,42 @@ const {
   deleteContatcById,
   updateContact,
   updateStatusContact,
+  filterContactByFavorite,
+  paginateContacts,
 } = require("../../controllers");
 
-router.get("/", getContacts);
+router.get("/filter", auth, filterContactByFavorite);
+router.get("/paginate", auth, paginateContacts);
 
-router.get("/:contactId", isValidId, getContactById);
+router.get("/", auth, getContacts);
 
-router.post("/", ValidBody.ValidFullContact, addContact);
+router.get("/:contactId", auth, isValidId, getContactById);
 
-router.delete("/:contactId", isValidId, deleteContatcById);
+router.post("/", auth, ValidBody.ValidFullContact, addContact);
 
-router.put("/:contactId", isValidId, ValidBody.ValidFullContact, updateContact);
+router.delete(
+  "/:contactId",
+  auth,
+  isValidId,
+  isOwnerOfContact,
+  deleteContatcById
+);
+
+router.put(
+  "/:contactId",
+  auth,
+  isValidId,
+  isOwnerOfContact,
+  ValidBody.ValidFullContact,
+  updateContact
+);
 
 router.patch(
   "/:contactId/favorite",
+  auth,
   isValidId,
   ValidBody.ValidFavorite,
+  isOwnerOfContact,
   updateStatusContact
 );
 
