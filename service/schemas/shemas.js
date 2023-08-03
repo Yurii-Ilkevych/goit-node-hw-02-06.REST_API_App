@@ -72,6 +72,10 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
     verify: {
       type: Boolean,
       default: false,
@@ -102,6 +106,7 @@ const userSchemaValid = Joi.object({
     .max(25)
     .regex(/^(?=.*[a-zA-Z])(?=.*\d)/),
 });
+
 
 const userSchemaValidEmail = Joi.object({email: Joi.string()
   .email({ tlds: { allow: ["com", "net", "ua", "ca", "uk"] } })
