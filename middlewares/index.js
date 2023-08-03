@@ -4,5 +4,7 @@ const auth = require("./auth")
 const isValidUser = require("./isValidUser")
 const isOwnerOfContact = require("./isOwnerOfContact")
 const uploadMiddleware = require("./uploadMiddleware")
+const isValidUserEmail = require("./isValidUserEmail")
 
-module.exports = { isValidId, ValidBody, auth, isValidUser, isOwnerOfContact, uploadMiddleware };
+module.exports = { isValidId, ValidBody, auth, isValidUser, isOwnerOfContact, uploadMiddleware, isValidUserEmail };
+

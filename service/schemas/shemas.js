@@ -72,10 +72,17 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-
     avatarURL: {
       type: String,
       required: true,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, "Verify token is required"],
     },
   },
   { versionKey: false }
@@ -100,6 +107,12 @@ const userSchemaValid = Joi.object({
     .regex(/^(?=.*[a-zA-Z])(?=.*\d)/),
 });
 
+
+const userSchemaValidEmail = Joi.object({email: Joi.string()
+  .email({ tlds: { allow: ["com", "net", "ua", "ca", "uk"] } })
+  .pattern(regexMail)
+  .required(),})
+
 const Contact = mongoose.model("contact", contactSchema);
 const User = mongoose.model("user", userSchema);
 module.exports = {
@@ -108,4 +121,5 @@ module.exports = {
   schemaFavoriteContact,
   User,
   userSchemaValid,
+  userSchemaValidEmail
 };
