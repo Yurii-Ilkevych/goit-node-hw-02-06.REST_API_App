@@ -24,4 +24,5 @@ router.get("/verify/:verificationToken", verifyUser)
 router.post("/verify", isValidUserEmail, additionalVerifyUser)
 
 
+
 module.exports = router;
