@@ -10,7 +10,6 @@ const registration = async (req, res, next) => {
   if (user) {
     throw HttpError(409, "Email in use");
   }
-
   const avatarURL = gravatar.url(email, {s: '250'});
   const verificationToken = nanoid(18);
 
