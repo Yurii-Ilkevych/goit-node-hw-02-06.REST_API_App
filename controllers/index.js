@@ -13,6 +13,10 @@ const getCurrentUser = require("./getCurrentUser")
 const changeSubscription = require("./changeSubscription")
 const filterContactByFavorite = require("./filterContactByFavorite")
 const paginateContacts = require("./paginateContacts")
+const updateAvatar = require("./updateAvatar")
+const verifyUser = require("./verifyUser")
+const additionalVerifyUser = require("./additionalVerifyUser")
+
 
 module.exports = {
   getContacts: controllerWrapper(getContacts),
@@ -28,4 +32,7 @@ module.exports = {
   changeSubscription: controllerWrapper(changeSubscription),
   filterContactByFavorite: controllerWrapper(filterContactByFavorite),
   paginateContacts: controllerWrapper(paginateContacts),
+  updateAvatar: controllerWrapper(updateAvatar),
+  verifyUser: controllerWrapper(verifyUser),
+  additionalVerifyUser: controllerWrapper(additionalVerifyUser)
 };
